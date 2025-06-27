@@ -6,6 +6,8 @@ import DynamicIsland from './Components/DynamicIsland';
 import TitaniumCenter from './Components/TitaniumCenter';
 import A17 from './Components/A17';
 import SpacialAudio from './Components/SpacialAudio';
+import FourTitanium from './Components/FourTitanium';
+import Action from './Components/Action';
 
 export default function App() {
   return (
@@ -22,9 +24,10 @@ export default function App() {
             </motion.div>
             <div className="grid gap-4 w-2/5">
               {/* Ceramic Shield */}
-              <div className="bg-black rounded-3xl flex items-center justify-center">
+              <motion.div initial='rest' whileHover='hovered' className="bg-black rounded-3xl flex items-center justify-center relative overflow-hidden">
+                <motion.img variants={{rest:{filter:'blur(10px)'},hovered:{filter:"blur(0px)"}}} transition={{duration:0.3}} src="/ceremic.png" className='absolute w-full h-full object-fill inset-0' alt="" />
                 <p className="text-white text-sm font-medium">Ceramic Shield</p>
-              </div>
+              </motion.div>
 
               {/* Main lens specs */}
               <div className="bg-black rounded-3xl flex justify-center items-end relative overflow-hidden py-12">
@@ -116,7 +119,7 @@ export default function App() {
 
             {/* Next generation portraits */}
             <div className="bg-black rounded-3xl flex justify-center items-start relative overflow-hidden p-2 flex-[2]">
-              <motion.img initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5}} src="/nextgenport.png" className='absolute inset-0 w-full h-full object-fill' alt="" />
+              <motion.img initial={{opacity:0}} animate={{opacity:1, filter:'blur(10px)'}} whileHover={{filter:'blur(0px)'}} transition={{duration:0.5}} src="/nextgenport.png" className='absolute inset-0 w-full h-full object-fill' alt="" />
               <motion.p initial={{y:-100}} animate={{y:0}} transition={{duration:0.5}} className="text-white text-sm z-10">Next generation portraits</motion.p>
             </div>
           </div>
@@ -125,26 +128,10 @@ export default function App() {
         {/* right */}
         <div className="grid gap-4 flex-1">
           {/* Four Titanium Colors */}
-          <motion.div
-              initial='rest'
-              whileHover="hovered"
-              className="group rounded-3xl flex justify-center items-start pt-14 p-2 relative flex-[2] overflow-hidden bg-black"
-            >
-              <motion.img initial={{y:250}} animate={{y:0}} transition={{duration:0.5}} src="/4titanium.png" className="absolute top-8 left-0 right-0 bottom-0 w-full h-full object-fill" alt="" />
-
-              <motion.p
-                variants={{
-                  rest: { y: -100 },
-                  hovered: { y: -50 },
-                }}
-                className="text-white text-lg font-medium z-10"
-              >
-                Four Titanium Colors
-              </motion.p>
-            </motion.div>
+          <FourTitanium/>
 
           {/* promotion */}
-          <div className="bg-black rounded-3xl flex justify-center items-center row-span-1">
+          <motion.div initial={{opacity:0}} animate={{opacity:1, filter:'blur(10px)'}} whileHover={{filter:'blur(0px)'}} transition={{duration:0.5}} className="bg-black rounded-3xl flex justify-center items-center row-span-1">
             <motion.p
               initial={{y:100}}
               animate={{y:0}}
@@ -153,7 +140,7 @@ export default function App() {
               >
               ProMotion
             </motion.p>
-          </div>
+          </motion.div>
           {/* next-lavel */}
           <div className="bg-black rounded-3xl flex justify-center items-end row-span-1 relative overflow-hidden">
             <img src="/gaming.png" className="absolute inset-0 w-full h-full object-fill" alt="" />
@@ -164,10 +151,7 @@ export default function App() {
 
 
           {/* Action button */}
-          <div className="bg-black rounded-3xl flex justify-center items-start relative overflow-hidden row-span-3">
-            <img src="/actionButton.png" className='absolute top-12 w-full h-full z-10' alt="" />
-            <motion.p initial={{y:100}} animate={{y:10}} transition={{duration:0.5}} className="text-white text-lg font-medium">Action button</motion.p>
-          </div>
+          <Action/>
         </div>
       </div>
     </div>
