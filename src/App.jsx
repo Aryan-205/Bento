@@ -1,10 +1,11 @@
 
-import { motion } from 'framer-motion'; 
+import { easeInOut, motion, scale } from 'framer-motion'; 
 
 import WifiComponent from './Components/WifiComponent';
 import DynamicIsland from './Components/DynamicIsland';
 import TitaniumCenter from './Components/TitaniumCenter';
 import A17 from './Components/A17';
+import SpacialAudio from './Components/SpacialAudio';
 
 export default function App() {
   return (
@@ -51,16 +52,19 @@ export default function App() {
 
           <div className="flex gap-4 row-span-2">
             {/* 5x Telephoto */}
-            <div className="bg-black rounded-3xl w-2/5 flex flex-col justify-center">
-              <p className="text-white text-6xl font-bold text-center">5x</p>
+            <motion.div
+              className="bg-black rounded-3xl w-2/5 flex flex-col justify-center overflow-hidden"
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration:0.5}}
+              whileHover='hovered'
+              >
+              <motion.p variants={{hovered:{scale:10}}} transition={{duration:0.8, ease:easeInOut}} className="text-white text-6xl font-bold text-center">5x</motion.p>
               <p className="text-white text-sm text-center">Telephoto on Pro Max</p>
-            </div>
+            </motion.div>
 
             {/* Spatial Audio */}
-            <div className="bg-black rounded-3xl flex justify-center items-end relative overflow-hidden w-3/5">
-            <motion.img initial={{y:-100}} animate={{y:0}} transition={{duration:0.5}} src="/metaglasses.png" className='absolute top-8 w-[80%] object-contain' alt="" />
-              <motion.p initial={{y:100}} animate={{y:-10}} transition={{duration:0.5}} className="text-white text-sm z-10">Spatial Audio</motion.p>
-            </div>
+            <SpacialAudio/>
           </div>
         </div>
 
@@ -91,12 +95,12 @@ export default function App() {
             </motion.div>
 
             {/* USB-C */}
-            <div className="bg-black rounded-3xl flex flex-col justify-between items-center relative overflow-hidden flex-1">
+            <motion.div whileHover='hovered' className="bg-black rounded-3xl flex flex-col justify-between items-center relative overflow-hidden flex-1 group">
               <motion.p initial={{y:-100}} animate={{y:10}} transition={{duration:0.5}} className="text-white text-md font-medium">USB-C</motion.p>
-              <img src="/usbline.png" className='absolute bottom-20 object-contain w-[40%] ' alt="" />
-              <motion.img initial={{scale:2}} animate={{scale:1}} transition={{duration:0.5}} src="/usblineout.png" className='absolute bottom-16 object-contain w-[60%] ' alt="" />
+              <motion.img initial={{scale:2}} animate={{scale:1}} transition={{duration:0.5}} src="/usbline.png" className='absolute bottom-20 object-contain w-[40%]' variants={{hovered:{scale:1.1}}} alt="" />
+              <motion.img initial={{scale:2}} animate={{scale:1}} transition={{duration:0.5}} src="/usblineout.png" className='absolute bottom-16 object-contain w-[60%] ' variants={{hovered:{scale:1.1}}} alt="" />
               <motion.p initial={{y:100}} animate={{y:-10}} transition={{duration:0.5}} className="text-white text-md">with USB 3</motion.p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Titanium (center large) */}
@@ -141,9 +145,14 @@ export default function App() {
 
           {/* promotion */}
           <div className="bg-black rounded-3xl flex justify-center items-center row-span-1">
-            <p className="text-5xl font-bold bg-gradient-to-r from-black via-white to-black text-transparent bg-clip-text">
+            <motion.p
+              initial={{y:100}}
+              animate={{y:0}}
+              transition={{duration:0.5}}
+              className="text-5xl font-bold bg-gradient-to-r from-black via-white to-black text-transparent bg-clip-text"
+              >
               ProMotion
-            </p>
+            </motion.p>
           </div>
           {/* next-lavel */}
           <div className="bg-black rounded-3xl flex justify-center items-end row-span-1 relative overflow-hidden">
@@ -156,7 +165,7 @@ export default function App() {
 
           {/* Action button */}
           <div className="bg-black rounded-3xl flex justify-center items-start relative overflow-hidden row-span-3">
-            <img src="/actionButton.png" className='absolute top-12 w-full h-full' alt="" />
+            <img src="/actionButton.png" className='absolute top-12 w-full h-full z-10' alt="" />
             <motion.p initial={{y:100}} animate={{y:10}} transition={{duration:0.5}} className="text-white text-lg font-medium">Action button</motion.p>
           </div>
         </div>

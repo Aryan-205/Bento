@@ -17,7 +17,7 @@ const WifiComponent = () => {
     if (isHovered) {
       intervalRef.current = setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 700); 
+      }, 500); 
     } else {
       clearInterval(intervalRef.current);
       setCurrentImageIndex(0);

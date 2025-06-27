@@ -19,26 +19,25 @@ export default function TitaniumCenter() {
   }, [isHovered]);
 
   return (
-    <motion.div
+    <div
       className="bg-black rounded-3xl flex flex-col justify-center items-center row-span-2 relative overflow-hidden" 
-      initial={{ x: 500 }}
-      animate={{ x: 0 }}
-      transition={{ duration: 0.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.img
         src='/central.png'
         className="absolute inset-0 w-full h-full object-contain"
-        animate={{ opacity: isHovered ? 0 : 1 }} 
-        transition={{ duration: 0.3 }} 
+        initial={{ scale: 0 }}
+        animate={{ scale:1 ,opacity: isHovered ? 0 : 1 }} 
+        transition={{ duration: 0.5 }} 
         alt="Central Image"
       />
 
       <motion.div
         className="absolute inset-0 w-full h-full flex items-center justify-center"
-        animate={{ opacity: isHovered ? 1 : 0 }} 
-        transition={{ duration: 0.3 }}
+        initial={{ scale: 0 }}
+        animate={{ scale:1, opacity: isHovered ? 1 : 0 }} 
+        transition={{ duration: 0.5 }}
       >
         <video
           ref={videoRef} 
@@ -50,6 +49,6 @@ export default function TitaniumCenter() {
           alt="Titanium Video"
         />
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
