@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 
 import WifiComponent from './Components/WifiComponent';
 import DynamicIsland from './Components/DynamicIsland';
+import TitaniumCenter from './Components/TitaniumCenter';
+import A17 from './Components/A17';
 
 export default function App() {
   return (
@@ -67,11 +69,7 @@ export default function App() {
           {/* middle top */}
           <div className="flex gap-4 row-span-1">
             {/* A17 PRO */}
-            <div className="bg-black rounded-3xl flex flex-col justify-center items-center relative overflow-hidden flex-1">
-              <div className='absolute w-28 h-28 bg-gradient-to-br from-[#868583] to-[#181818] border border-gray-900' />
-              <p className="text-black text-3xl font-bold z-10">A17</p>
-              <p className="text-sm z-10 bg-gradient-to-bl from-[#D0CFCA] to-[#98938F] text-transparent bg-clip-text">PRO</p>
-            </div>
+            <A17/>
 
             {/* Super-high-resolution photos */}
             <motion.div
@@ -102,9 +100,7 @@ export default function App() {
           </div>
 
           {/* Titanium (center large) */}
-          <motion.div initial='rest' whileHover='hovered' className="bg-black rounded-3xl flex flex-col justify-center items-center  row-span-2">
-            <motion.img variants={{rest:{},hovered:{}}} src="/central.png"  className='w-[80%]' alt="" />
-          </motion.div>
+          <TitaniumCenter/>
 
           {/* middle bottom */}
           <div className="flex gap-4 row-span-1">
